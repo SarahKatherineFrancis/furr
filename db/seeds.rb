@@ -5,10 +5,28 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+puts "Clearing database"
+Petsitter.destroy_all
+User.destroy_all
+puts "Creating 20 Users"
 
+20.times do
+  User.create(first_name: Faker::Name.first_name,
+              last_name: Faker::Name.last_name,
+              email: Faker::Internet.email,
+              password: "123456",
+              address: Faker::Address.street_address,
+              phone: Faker::PhoneNumber,
+              profile_photo: Faker::Avatar.image)
+end
 
+puts "Users created"
 
-user = User.new(first_name: "Alex", last_name: "Smith", email: "alex2@gmail.com", password: "123456", address: "123 Albert Road", phone: "123456789", profile_photo: "https://images.unsplash.com/photo-1466840787022-48e0ec048c8a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2850&q=80")
-user.save!
+puts "Creating 10 Petsitters"
+index = 0
+10.times do
+  Petsitter.create(user_id: User.ids[index], experience: Faker::Lorem.paragraph, availability: true)
+  index += 1
+end
 
-puts "user created"
+puts "Petsitters created"
