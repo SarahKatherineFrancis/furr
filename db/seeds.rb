@@ -5,6 +5,8 @@
 #
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
+require 'date'
+
 puts "Clearing database"
 Petsitter.destroy_all
 User.destroy_all
@@ -30,3 +32,19 @@ index = 0
 end
 
 puts "Petsitters created"
+
+
+
+user = User.new(first_name: 'oscar',
+  last_name: 'welton',
+  email: 'osc@test.com',
+  password: "123456",
+  address: 'howe street',
+  phone: 123456789)
+
+  user.save
+  p user
+
+b = Booking.new(start_date: 2020-10-01, end_date: 2021-11-02, service: 'sitting', pet_name: 'rosco', pet_type: 'dog', user_id: user.id)
+b.save
+puts b

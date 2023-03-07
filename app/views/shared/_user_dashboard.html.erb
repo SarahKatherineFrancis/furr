@@ -1,6 +1,7 @@
 
 <h2>Welcome to your user dashboard!</h2>
+<%= current_user.id %>
 
 <%= link_to "Find Sitters", petsitters_path %>
 
-<%= link_to "View my bookings", petsitters_path %>
+<%= link_to "View my bookings", bookings_path %>
