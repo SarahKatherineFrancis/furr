@@ -1,2 +1,9 @@
-<%= render "shared/homebanner" %>
+<% if user_signed_in? %>
+  <%# <h1>this is a test</h1> %>
+  <button>Find a Sitter</button>
+  <button>View My Bookings</button>
+<% else %>
+  <%= render "shared/homebanner" %>
+<% end %>
+
 <%= render "shared/footer" %>
