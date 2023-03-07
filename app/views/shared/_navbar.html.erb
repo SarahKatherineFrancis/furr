@@ -14,21 +14,9 @@
           <li class="nav-item active">
             <%= link_to "Your Dashboard", root_path, class: "nav-link" %>
           </li>
-
-<<<<<<< HEAD
           <li class="nav-item">
             <%= link_to "My profile", my_profile_path %>
             <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-            </a>
-=======
-          <li class="nav-item active">
-            <%= link_to "Your Profile", root_path, class: "nav-link" %>
->>>>>>> 2c6cc393efa4b1af3bd1acb03a07261b392a5078
-          </li>
-
-          <li>
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          </li>
           <li class="nav-item dropdown">
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
               <%= link_to "Action", "#", class: "dropdown-item" %>
@@ -37,8 +25,6 @@
           </li>
               <%= button_to("Log Out", destroy_user_session_path, method: :delete) %>
           </li>
-
-
         <% else %>
           <li>
             <%= link_to "Log In", new_user_session_path, class: "nav-link" %>
