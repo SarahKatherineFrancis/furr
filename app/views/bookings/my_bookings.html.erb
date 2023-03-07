@@ -1,7 +1,7 @@
 <h2>My Bookings:</h2>
 <% @bookings.each do |booking| %>
   <div class="booking-card">
-    <p>Owner Name: <%= booking.user.first_name booking.user.last_name%></p>
+    <p>Owner Name: <%= current_user.first_name%></p>
     <p>Start: <%= booking.start_date %></p>
     <p>End: <%= booking.end_date %></p>
     <p>Service: <%= booking.service %></p>

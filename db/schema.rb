@@ -21,10 +21,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_145608) do
     t.string "pet_name"
     t.string "pet_type"
     t.bigint "user_id", null: false
-    t.bigint "petsitters_id", null: false
+    t.bigint "petsitter_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["petsitters_id"], name: "index_bookings_on_petsitters_id"
+    t.index ["petsitter_id"], name: "index_bookings_on_petsitter_id"
     t.index ["user_id"], name: "index_bookings_on_user_id"
   end
 
@@ -54,7 +54,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_06_145608) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
-  add_foreign_key "bookings", "petsitters", column: "petsitters_id"
+  add_foreign_key "bookings", "petsitters"
   add_foreign_key "bookings", "users"
   add_foreign_key "petsitters", "users"
 end
