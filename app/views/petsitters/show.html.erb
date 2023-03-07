@@ -1,1 +1,48 @@
-<h1>hello this is the petsitters show page.</h1>
+<div class="#" style="background-image: url('<%= @petsitter.profile_picture %>')"></div>
+
+<div class="container margin-top-negative">
+  <div class="row">
+    <div class="col-8">
+      <div class="petsitter-show-card">
+        <h1><%= @petsitter.first_name %><%= @petsitter.last_name %></h1>
+        <p class="petsitter-show-email"><%= @petsitter.email %></p>
+      </div>
+      <div class="petsitter-show-card">
+        <h3>More information:</h3>
+        <p><%= @petsitter.description %></p>
+      </div>
+    </div>
+
+    <div class="col-4">
+      <div class="petsitter-show-card">
+        <h5>Hire me:</h5>
+
+        <form action="">
+          <div class="input-group">
+            <span class="input-group-text" id="start-date-label">From:</span>
+            <input type="text" class="form-control" placeholder="Date + Time" aria-label="start-date" aria-describedby="start-date-label">
+          </div>
+          <div class="input-group mt-2">
+            <span class="input-group-text" id="end-date-label">To:</span>
+            <input type="text" class="form-control" placeholder="Date + Time" aria-label="end-date" aria-describedby="start-date-label">
+          </div>
+          <input type="submit" value="Book" class="btn btn-success mt-2" style="width: 100%">
+        </form>
+      </div>
+      <div class="flat-show-card">
+        <h3>Booking Details:</h3>
+        <div class="flex">
+          <div class="flex">
+            <%= @petsitter.pet_name %>
+          </div>
+          <div class="flex ms-3">
+            <%= @petsitter.pet_type %>
+          </div>
+          <div class="flex ms-3">
+            <%= @petsitter.service%>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
