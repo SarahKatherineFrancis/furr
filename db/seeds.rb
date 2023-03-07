@@ -18,7 +18,7 @@ puts "Creating 20 Users"
               email: Faker::Internet.email,
               password: "123456",
               address: Faker::Address.street_address,
-              phone: Faker::PhoneNumber,
+              phone: Faker::PhoneNumber.phone_number,
               profile_photo: Faker::Avatar.image)
 end
 

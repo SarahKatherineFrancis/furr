@@ -7,4 +7,5 @@ class User < ApplicationRecord
   has_many :bookings
 
   validates :email, :encrypted_password, :first_name, :last_name, :address, :phone, presence: true
+  validates :email, email: true
 end
