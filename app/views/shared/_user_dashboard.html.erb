@@ -3,6 +3,8 @@
 
   <ul class="button-list">
     <li class="button-li">
+<h2>Welcome to your user dashboard!</h2>
+<%= current_user.id %>
 
     </li>
     <li class="button-li">
@@ -38,3 +40,4 @@
 
 
 </div>
+<%= link_to "View my bookings", my_bookings_path %>
