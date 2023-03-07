@@ -24,8 +24,8 @@ puts "Users created"
 
 puts "Creating 10 Petsitters"
 index = 0
-10.times do
-  Petsitter.create(user_id: User.ids[index], experience: Faker::Lorem.paragraph, availability: true)
+12.times do
+  Petsitter.create(user_id: User.ids[index], experience: Faker::Lorem.paragraph, availability: Faker::Boolean)
   index += 1
 end
 
