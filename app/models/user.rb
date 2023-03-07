@@ -5,9 +5,6 @@ class User < ApplicationRecord
 
   has_one :petsitter
   has_many :bookings
-
-
-  validates :email, :encrypted_password, :first_name, :last_name, :address, :phone, presence: true
-  # validates ∶email_attributes, email: true
-
+  
+  validates :email, :encrypted_password, :first_name, :last_name, :address, :phone, :profile_photo, presence: true
 end
