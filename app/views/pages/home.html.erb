@@ -1,2 +1,5 @@
-<%= render "shared/homebanner" %>
-<%= render "shared/footer" %>
+<% if user_signed_in? %>
+  <%= render "shared/user_dashboard" %>
+<% else %>
+  <%= render "shared/homebanner" %>
+<% end %>
