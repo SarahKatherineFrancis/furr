@@ -10,3 +10,10 @@ user = User.new(first_name: "Alex", last_name: "Smith", email: "alex2@gmail.com"
 user.save!
 
 puts "user created"
+
+20 users
+
+12 petsitters (random user.id )
+
+1 petsitter
+5 petsitter 
