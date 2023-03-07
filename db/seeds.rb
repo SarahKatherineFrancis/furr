@@ -12,7 +12,3 @@ user.save!
 
 puts "user created"
 
-# 10.times do (
-
-# )
-# end
