@@ -1,0 +1,5 @@
+<% @petsitters.each do |petsitter| %>
+  <p><%= "#{petsitter.user.first_name} #{petsitter.user.last_name}" %></p>
+  <p>Experience:<%= petsitter.experience %></p>
+  <p>Available:<%= petsitter.availability %></p>
+<% end %>
