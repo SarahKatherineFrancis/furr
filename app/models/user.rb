@@ -9,4 +9,5 @@ class User < ApplicationRecord
 
   validates :email, :encrypted_password, :first_name, :last_name, :address, :phone, presence: true
   # validates ∶email_attributes, email: true
+
 end
