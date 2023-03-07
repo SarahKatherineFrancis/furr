@@ -1,8 +1,7 @@
-
 <h1>hello this is the petsitters index page.</h1>
+<%= link_to "Go Back", root_path %>
 <% @petsitters.each do |petsitter| %>
   <p><%= "#{petsitter.user.first_name} #{petsitter.user.last_name}" %></p>
   <p>Experience:<%= petsitter.experience %></p>
   <p>Available:<%= petsitter.availability %></p>
 <% end %>
-
