@@ -1,0 +1,23 @@
+.review {
+  border: 1px solid lightgray;
+  padding: 8px;
+}
+
+.review-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+  border-bottom: 1px solid lightgray;
+}
+
+.petsitter-show-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.checked {
+  color: gold;
+}
