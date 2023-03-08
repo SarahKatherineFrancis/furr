@@ -1,10 +1,6 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
 
-  def my_bookings
-    @bookings = current_user.bookings
-  end
-
   def create
     @petsitter = Petsitter.find(params[:petsitter_id])
     @booking = @petsitter.bookings.build(booking_params)
@@ -14,9 +10,13 @@ class BookingsController < ApplicationController
     end
   end
 
+  def my_bookings
+    @bookings = current_user.bookings
+  end
+
   private
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date, :service, :pet_name, :pet_type)
+    params.require(:booking).permit(:start_date, :end_date, :pet_name, :pet_type, :service, :petsitter_id, :user_id)
   end
 end
