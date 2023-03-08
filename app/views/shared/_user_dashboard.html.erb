@@ -15,20 +15,25 @@
           <% booking_array << book %>
         <% end %>
     <% end %>
-
-    <% booking_array.each do |booking| %>
-    <div class="card" style="width: 18rem;">
-      <div class="card-body">
-        <h5 class="card-title"><%=booking.petsitter.user.first_name%> <%=booking.petsitter.user.last_name%></h5>
-        <h6 class="card-subtitle mb-2 text-muted">Duration: <%=booking.end_date - booking.start_date%> </h6>
-
-        <p class="card-text"><%=booking.service%></p>
-        <p class="card-text"><%=booking.pet_name%></p>
-        <p class="card-text"><%=booking.pet_type%></p>
-        <a href="#" class="card-link">Card link</a>
-        <a href="#" class="card-link">Another link</a>
-        </div>
+    <% if booking_array.empty? %>
+      <div class="empty-card">
+        <h3>You currently have no bookings.</h3>
       </div>
+      <% else %>
+      <% booking_array.each do |booking| %>
+      <div class="card" style="width: 18rem;">
+        <div class="card-body">
+          <h5 class="card-title"><%=booking.petsitter.user.first_name%> <%=booking.petsitter.user.last_name%></h5>
+          <h6 class="card-subtitle mb-2 text-muted">Duration: <%=booking.end_date - booking.start_date%> </h6>
+
+          <p class="card-text"><%=booking.service%></p>
+          <p class="card-text"><%=booking.pet_name%></p>
+          <p class="card-text"><%=booking.pet_type%></p>
+          <a href="#" class="card-link">Card link</a>
+          <a href="#" class="card-link">Another link</a>
+          </div>
+        </div>
+        <% end %>
       <% end %>
   </div>
 
