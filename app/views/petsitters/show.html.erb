@@ -12,38 +12,24 @@
         <h3><strong>More information:</strong></h3>
         <br>
         <p><strong>Availability:</strong> <%= @petsitter.availability %></p>
-         <p><strong>Experience:</strong> <%= @petsitter.experience %></p>
+        <p><strong>Experience:</strong> <%= @petsitter.experience %></p>
       </div>
     </div>
 
     <div class="col-4">
-      <div class="petsitter-show-card">
-        <h5>Hire me:</h5>
-
-        <form action="">
-          <div class="input-group">
-            <span class="input-group-text" id="start-date-label">Start on:</span>
-            <input type="text" class="form-control" placeholder="Date + Time" aria-label="start-date" aria-describedby="start-date-label">
-          </div>
-          <div class="input-group mt-2">
-            <span class="input-group-text" id="end-date-label">End at:</span>
-            <input type="text" class="form-control" placeholder="Date + Time" aria-label="end-date" aria-describedby="start-date-label">
-          </div>
-          <div class="input-group mt-2">
-            <span class="input-group-text" id="pet-name-label">Pet Name:</span>
-            <input type="text" class="form-control" placeholder="Pet Name" aria-label="pet-name" aria-describedby="pet-name-label">
-          </div>
-          <div class="input-group mt-2">
-            <span class="input-group-text" id="pet-name-label">Pet Type:</span>
-            <input type="text" class="form-control" placeholder="Dog | Cat | Parrot" aria-label="pet-name" aria-describedby="pet-name-label">
-          </div>
-          <div class="input-group mt-2">
-            <span class="input-group-text" id="service-description-label">Service Description:</span>
-            <input type="text" class="form-control" placeholder="Walk | Feed" aria-label="service-description" aria-describedby="service-description-label">
-          </div>
-          <input type="submit" value="Book" class="btn btn-secondary mt-2" style="width: 100%">
-        </form>
-      </div>
+  <div class="petsitter-show-card">
+    <h5>Hire me:</h5>
+    <%= simple_form_for :booking, url: "" do |f| %>
+      <%= f.input :start_date, label: "Start on:", input_html: {class: "form-control", placeholder: "Date + Time"} %>
+      <%= f.input :end_date, label: "End at:", input_html: {class: "form-control", placeholder: "Date + Time"}%>
+      <%= f.input :pet_name, label: "Pet Name:", input_html: {class: "form-control", placeholder: "Pet Name"}%>
+      <%= f.input :pet_type, label: "Pet Type:", input_html: {class: "form-control", placeholder: "Dog | Cat | Parrot"} %>
+      <%= f.input :service_description, label: "Service Description:", input_html: {class: "form-control", placeholder: "Walk | Feed"}%>
+      <%= f.select :service_description, ['walk', 'feed', 'daycare']%>
+      <%= f.submit "Book", class: "btn btn-secondary mt-2", style: "width: 100%" %>
+    <% end %>
+  </div>
+</div>
       </div>
     </div>
   </div>
