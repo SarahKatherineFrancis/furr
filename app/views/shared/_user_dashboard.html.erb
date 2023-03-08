@@ -1,7 +1,43 @@
+<div class="contents">
+  <h2>Hello, <%= current_user.first_name.capitalize %>! Welcome to your dashboard:</h2>
 
+  <ul class="button-list">
+    <li class="button-li">
 <h2>Welcome to your user dashboard!</h2>
 <%= current_user.id %>
 
-<%= link_to "Find Sitters", petsitters_path %>
+    </li>
+    <li class="button-li">
+      <%= link_to "View my bookings", petsitters_path, class:"btn btn-secondary" %>
+    </li>
+  </ul>
 
+<h2>Current Bookings:</h2>
+
+
+<h2>Local Sitters</h2>
+
+ <div class="row">
+  <% petsitters = Petsitter.all %>
+
+    <% petsitters[0..3].each do |petsitter| %>
+    <div class="col-md-3 mb-3">
+        <div class="card mb-4 shadow-sm h-100">
+          <img src="<%= petsitter.user.profile_photo %>" class="card-img-top" alt="<%= petsitter.user.first_name %>">
+          <div class="card-body">
+            <h5 class="card-title"><%= "#{petsitter.user.first_name} #{petsitter.user.last_name}" %></h5>
+            <p class="card-text"><%= petsitter.experience %></p>
+            <p class="card-text"><%= petsitter.availability ? "Available" : "Not Available" %></p>
+          </div>
+          <div class="card-footer">
+            <%= link_to "Book now", petsitter_path(petsitter), class: "btn btn-primary btn-block" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+     <%= link_to "View All Sitters", petsitters_path, class:"btn btn-secondary" %>
+
+
+
+</div>
 <%= link_to "View my bookings", my_bookings_path %>
