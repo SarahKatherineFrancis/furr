@@ -1,17 +1,18 @@
-<h1>hello this is the petsitters show page.</h1>
-<%# <div class="map" style="background-image: url('<%= geocoded map %>')</div> %>
+<%# <div class="map" style="background-image: url('<%= geocoded map') %></div>
 
 <div class="container margin-top-negative">
   <div class="row">
     <div class="col-8">
       <div class="petsitter-show-card">
-        <h1><%= @petsitter.user.first_name %></h1>
-        <p><%= @petsitter.user.email %></p>
+        <h1><%= @petsitter.user.first_name %> <%= @petsitter.user.last_name %></h1>
+        <br>
+        <p><strong>Email Address:</strong> <%= @petsitter.user.email %></p>
       </div>
       <div class="petsitter-show-card">
-        <h3>More information:</h3>
-        <p><%= @petsitter.availability %></p>
-         <p><%= @petsitter.experience %></p>
+        <h3><strong>More information:</strong></h3>
+        <br>
+        <p><strong>Availability:</strong> <%= @petsitter.availability %></p>
+         <p><strong>Experience:</strong> <%= @petsitter.experience %></p>
       </div>
     </div>
 
@@ -21,12 +22,24 @@
 
         <form action="">
           <div class="input-group">
-            <span class="input-group-text" id="start-date-label">From:</span>
+            <span class="input-group-text" id="start-date-label">Start on:</span>
             <input type="text" class="form-control" placeholder="Date + Time" aria-label="start-date" aria-describedby="start-date-label">
           </div>
           <div class="input-group mt-2">
-            <span class="input-group-text" id="end-date-label">To:</span>
+            <span class="input-group-text" id="end-date-label">End at:</span>
             <input type="text" class="form-control" placeholder="Date + Time" aria-label="end-date" aria-describedby="start-date-label">
+          </div>
+          <div class="input-group mt-2">
+            <span class="input-group-text" id="pet-name-label">Pet Name:</span>
+            <input type="text" class="form-control" placeholder="Pet Name" aria-label="pet-name" aria-describedby="pet-name-label">
+          </div>
+          <div class="input-group mt-2">
+            <span class="input-group-text" id="pet-name-label">Pet Type:</span>
+            <input type="text" class="form-control" placeholder="Dog | Cat | Parrot" aria-label="pet-name" aria-describedby="pet-name-label">
+          </div>
+          <div class="input-group mt-2">
+            <span class="input-group-text" id="service-description-label">Service Description:</span>
+            <input type="text" class="form-control" placeholder="Walk | Feed" aria-label="service-description" aria-describedby="service-description-label">
           </div>
           <input type="submit" value="Book" class="btn btn-secondary mt-2" style="width: 100%">
         </form>
