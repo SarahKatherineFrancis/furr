@@ -5,6 +5,6 @@ class PetsittersController < ApplicationController
 
   def show
     @petsitter = Petsitter.find(params[:id])
-    @bookings = current_user.bookings
+    @booking = Booking.new
   end
 end
