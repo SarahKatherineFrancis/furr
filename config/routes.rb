@@ -5,7 +5,7 @@ Rails.application.routes.draw do
   get '/my_bookings', to: 'bookings#my_bookings', as: 'my_bookings'
   resources :bookings, only: [:create, :index]
 
-  resources :users, only: [:show]
+  resources :users, only: [:index, :show]
 
   get '/my_profile', to: 'users#show', id: 'current'
   # Defines the root path route ("/")
