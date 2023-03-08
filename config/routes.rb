@@ -6,6 +6,8 @@ Rails.application.routes.draw do
 
   resources :users, only: [:show]
 
+  resources :reviews, only: [:show, :index, :create]
+
   get '/my_profile', to: 'users#show', id: 'current'
   # Defines the root path route ("/")
   resources :petsitters, only: [:index, :show, :new, :create] do
