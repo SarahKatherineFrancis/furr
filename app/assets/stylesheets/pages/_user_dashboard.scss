@@ -1,10 +1,19 @@
 .button-list {
   margin: 0px;
-  padding: 0px; 
+  padding: 0px;
 }
 
 .button-li {
   display: inline;
   margin: 0px;
 
+}
+
+.sitters {
+  display: flex;
+ overflow: scroll;
+}
+
+.card {
+  width: 100px;
 }

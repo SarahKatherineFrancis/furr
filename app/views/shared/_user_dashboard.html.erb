@@ -8,7 +8,7 @@
 
     </li>
     <li class="button-li">
-      <%= link_to "View my bookings", petsitters_path, class:"btn btn-secondary" %>
+      <%= link_to "View my bookings", my_bookings_path, class:"btn btn-secondary" %>
     </li>
   </ul>
 
@@ -17,11 +17,11 @@
 
 <h2>Local Sitters</h2>
 
- <div class="row">
+ <%# <div class="row"> %>
+ 
   <% petsitters = Petsitter.all %>
-
-    <% petsitters[0..3].each do |petsitter| %>
-    <div class="col-md-3 mb-3">
+    <% petsitters.each do |petsitter| %>
+    <%# <div class="col-md-3 mb-3"> %>
         <div class="card mb-4 shadow-sm h-100">
           <img src="<%= petsitter.user.profile_photo %>" class="card-img-top" alt="<%= petsitter.user.first_name %>">
           <div class="card-body">
@@ -36,8 +36,4 @@
       </div>
     <% end %>
      <%= link_to "View All Sitters", petsitters_path, class:"btn btn-secondary" %>
-
-
-
 </div>
-<%= link_to "View my bookings", my_bookings_path %>
