@@ -1,18 +1,11 @@
 <div class="contents">
   <h2>Hello, <%= current_user.first_name.capitalize %>! Welcome to your dashboard:</h2>
 
-  <ul class="button-list">
-    <li class="button-li">
-<h2>Welcome to your user dashboard!</h2>
-<%= current_user.id %>
 
-    </li>
+<h2>Current Bookings:</h2>
     <li class="button-li">
       <%= link_to "View my bookings", my_bookings_path, class:"btn btn-secondary" %>
     </li>
-  </ul>
-
-<h2>Current Bookings:</h2>
 
 
 <h2>Local Sitters</h2>
@@ -35,7 +28,7 @@
         </div>
       </div>
     <% end %>
-     <%= link_to "View All Sitters", petsitters_path, class:"btn btn-secondary" %>
 
+     <%= link_to "View All Sitters", petsitters_path, class:"btn btn-secondary" %>
 
 </div>

@@ -10,30 +10,37 @@
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav me-auto">
-        <% if user_signed_in? %>
-          <li class="nav-item active">
+        <% if user_signed_in? && current_user.petsitter %>
+          <li class="nav-item">
             <%= link_to "Your Dashboard", root_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
-            <%= link_to "My profile", my_profile_path %>
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
-          <li class="nav-item dropdown">
-            <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Action", "#", class: "dropdown-item" %>
-              <%= link_to "Another action", "#", class: "dropdown-item" %>
-            </div>
-          </li>
-            <%= link_to "My profile", my_profile_path, class: "nav-link" %>
+            <a>
+              <%= link_to "My profile", my_profile_path, class: "nav-link" %>
             </a>
           </li>
           <li>
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar dropdown-toggle", id: "navbarDropdown", data: { bs_toggle: "dropdown" }, 'aria-haspopup': true, 'aria-expanded': false %>
+              <%= button_to("Log Out", destroy_user_session_path, method: :delete,  class: "btn btn-secondary") %>
+          </li>
+          <% elsif user_signed_in? %>
+          <li>
+            <a>
+              <%= link_to "Become a Petsitter", new_petsitter_path, class: "nav-link" %>
+            </a>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Your Dashboard", root_path, class: "nav-link" %>
+          </li>
+          <li class="nav-item">
+            <a>
+              <%= link_to "My profile", my_profile_path, class: "nav-link" %>
+            </a>
           </li>
           <li>
-              <%= button_to("Log Out", destroy_user_session_path, method: :delete) %>
+              <%= button_to("Log Out", destroy_user_session_path, method: :delete,  class: "btn btn-secondary") %>
           </li>
         <% else %>
-          <li>
+          <li class="nav-item">
             <%= link_to "Log In", new_user_session_path, class: "nav-link" %>
           </li>
           <li class="nav-item">
@@ -44,5 +51,3 @@
     </div>
   </div>
 </div>
-
-
