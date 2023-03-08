@@ -9,6 +9,8 @@ Rails.application.routes.draw do
 
   get '/my_profile', to: 'users#show', id: 'current'
   # Defines the root path route ("/")
+  resources :petsitters, only: [:index, :show, :new, :create] do
+    resources :bookings, only: [:create, :show, :edit, :update, :destroy]
   resources :petsitters, only: [:index, :show] do
     resources :bookings, only: [ :create, :new, :show, :edit, :update, :destroy]
   end
