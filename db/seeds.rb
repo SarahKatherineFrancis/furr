@@ -32,7 +32,7 @@ end
 
   p "created petsitter profile with id #{pet.id}"
 
-  booking= Booking.create!(start_date: Date.today,
+  booking = Booking.create!(start_date: Date.today,
     end_date: Date.today,
     service: ["Dog Walking", "Pet Sitting", "Pet Boarding"].sample,
     pet_name: Faker::Creature::Dog.name,
