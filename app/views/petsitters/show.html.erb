@@ -12,9 +12,10 @@
 
       </div>
       <div class="petsitter-show-card">
-      <h3>User Reviews (<%=@sitter_reviews%>):</h3>
+
+      <h3>User Reviews (<%=@count%>):</h3>
+      <h3>Average rating (<%= @average %>)</h3>
        <div class="reviews">
-       <% sitter_reviews = [] %>
         <% @reviews.each do |review| %>
         <% if review.booking.petsitter.id == @petsitter.id%>
           <div class="review">
@@ -62,7 +63,6 @@
             </div>
             <p>Comment: <%= review.comment %></p>
           </div>
-          <% sitter_reviews << review %>
           <% end %>
         <% end %>
         </div>

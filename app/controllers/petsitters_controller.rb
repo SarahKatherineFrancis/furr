@@ -7,8 +7,9 @@ class PetsittersController < ApplicationController
     @petsitter = Petsitter.find(params[:id])
     @booking = Booking.new
     @reviews = Review.all
-    @sitter_reviews = sitter_reviews_counter
-    end
+    @count = sitter_reviews_counter
+    @average = average_review_score
+  end
 
   def new
     @petsitter = Petsitter.new
@@ -21,14 +22,28 @@ class PetsittersController < ApplicationController
   end
 
   def sitter_reviews_counter
-    sitter_reviews = []
     @reviews = Review.all
+    count = 0
     @reviews.each do |review|
       if review.booking.petsitter.id == @petsitter.id
-        sitter_reviews << review
+        count += 1
       end
-    return sitter_reviews.count
     end
+    return count
+  end
+
+  def average_review_score
+    @reviews = Review.all
+    scores = []
+    @reviews.each do |review|
+      scores << review.rating if review.booking.petsitter.id == @petsitter.id
+    end
+    sum = 0
+      scores.each do |rating|
+        sum += rating
+      end
+    average = sum / scores.count
+    return average
   end
 
   private
@@ -36,4 +51,5 @@ class PetsittersController < ApplicationController
   def petsitter_params
     params.require(:petsitter).permit(:experience, :availability)
   end
+
 end
