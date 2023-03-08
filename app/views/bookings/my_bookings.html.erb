@@ -21,7 +21,7 @@
       </div>
       <div class="row align-items-center mt-3">
         <div class="col-md-8">
-          <a href="#" class="btn btn-primary btn-sm mr-2">Add a Review</a>
+          <a href="bookings/y/reviews/new" class="btn btn-primary btn-sm mr-2">Add a Review</a>
           <a href="#" class="btn btn-secondary btn-sm">Book Again</a>
         </div>
         <div class="col-md-4 text-right">
@@ -30,4 +30,9 @@
       </div>
     </div>
   </div>
+<% end %>
+ <%= link_to "new revs", new_petsitter_booking_review_path(@booking), class:"btn btn-secondary" %>
+
+<% @bookings.each do |booking| %>
+  <%= booking.id %>
 <% end %>

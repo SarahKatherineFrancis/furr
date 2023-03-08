@@ -48,5 +48,5 @@ end
     rating: rand(0..5),
     booking_id: booking.id)
 
-    p "create a review. review id #{review.id} for booking with sitter #{booking.petsitter.id} and user #{booking.user.id}"
+    p "create a review. review id #{review.id} for booking with sitter #{review.booking.petsitter.id} and user #{review.booking.user.id}"
 end

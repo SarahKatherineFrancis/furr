@@ -6,6 +6,8 @@ class PetsittersController < ApplicationController
   def show
     @petsitter = Petsitter.find(params[:id])
     @booking = Booking.new
+    @reviews = Review.all
+
   end
 
   def new

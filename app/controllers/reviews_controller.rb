@@ -4,7 +4,11 @@ class ReviewsController < ApplicationController
     @reviews = Review.all
   end
 
-  def show
-    
+  def new
+    @review = Review.new
+  end
+
+  def create
+
   end
 end

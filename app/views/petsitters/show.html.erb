@@ -15,19 +15,33 @@
     </div>
 
     <div class="col-4">
-  <div class="petsitter-show-card">
-    <h5>Hire me:</h5>
-    <%= simple_form_for([@petsitter, @booking]) do |f| %>
-      <%= f.input :start_date, label: "Start on:", input_html: {class: "form-control", placeholder: "Date + Time"} %>
-      <%= f.input :end_date, label: "End at:", input_html: {class: "form-control", placeholder: "Date + Time"}%>
-      <%= f.input :pet_name, label: "Pet Name:", input_html: {class: "form-control", placeholder: "Pet Name"}%>
-      <%= f.input :pet_type, label: "Pet Type:", input_html: {class: "form-control", placeholder: "Dog | Cat | Parrot"} %>
-      <%= f.input :service, label: "Service Description:", input_html: {class: "form-control", placeholder: "Walk | Feed"}%>
-      <%= f.select :service, ['walk', 'feed', 'daycare']%>
-      <%= f.submit "Book", class: "btn btn-secondary mt-2", style: "width: 100%" %>
-    <% end %>
-</div>
+      <div class="petsitter-show-card">
+        <h5>Hire me:</h5>
+        <%= simple_form_for([@petsitter, @booking]) do |f| %>
+          <%= f.input :start_date, label: "Start on:", input_html: {class: "form-control", placeholder: "Date + Time"} %>
+          <%= f.input :end_date, label: "End at:", input_html: {class: "form-control", placeholder: "Date + Time"}%>
+          <%= f.input :pet_name, label: "Pet Name:", input_html: {class: "form-control", placeholder: "Pet Name"}%>
+          <%= f.input :pet_type, label: "Pet Type:", input_html: {class: "form-control", placeholder: "Dog | Cat | Parrot"} %>
+          <%= f.input :service, label: "Service Description:", input_html: {class: "form-control", placeholder: "Walk | Feed"}%>
+          <%= f.select :service, ['walk', 'feed', 'daycare']%>
+          <%= f.submit "Book", class: "btn btn-secondary mt-2", style: "width: 100%" %>
+        <% end %>
       </div>
+    </div>
+    <div class="reviews">
+      <h1>Sitter Reviews:</h1>
+        <% @reviews.each do |review| %>
+        <% if review.booking.petsitter.id == @petsitter.id%>
+          <div class="review">
+
+            <p>User: <%= review.booking.user.first_name %> </p>
+            <p>Comment: <%= review.comment %></p>
+            <p>Rating: <%= review.rating %>/5</p>
+          </div>
+          <% end %>
+        <% end %>
+       
+    </div>
     </div>
   </div>
 </div>
