@@ -1,8 +1,7 @@
-<%= form_with(model: [@petsitter, @booking], local: true) do |form| %>
+<%= form_with(model: [ @petsitter, @booking ], local: true) do |form| %>
   <% if @booking.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@booking.errors.count, "error") %> prohibited this booking from being saved:</h2>
-
       <ul>
       <% @booking.errors.full_messages.each do |message| %>
         <li><%= message %></li>
@@ -13,30 +12,15 @@
 
   <div class="field">
     <%= form.label :start_date %>
-    <%= form.date_field :start_date %>
+    <%= form.date_select :start_date %>
   </div>
 
   <div class="field">
     <%= form.label :end_date %>
-    <%= form.date_field :end_date %>
-  </div>
-
-  <div class="field">
-    <%= form.label :service %>
-    <%= form.text_field :service %>
-  </div>
-
-  <div class="field">
-    <%= form.label :pet_name %>
-    <%= form.text_field :pet_name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :pet_type %>
-    <%= form.text_field :pet_type %>
+    <%= form.date_select :end_date %>
   </div>
 
   <div class="actions">
-    <%= form.submit "Create Booking" %>
+    <%= form.submit %>
   </div>
 <% end %>
