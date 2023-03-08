@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
   get '/my_bookings', to: 'bookings#my_bookings', as: 'my_bookings'
+  resources :bookings, only: [:create, :index]
 
   resources :users, only: [:show]
 
