@@ -1,28 +1,37 @@
 <h1>hello this is the petsitters show page.</h1>
+<%# <div class="map" style="background-image: url('<%= geocoded map %>')</div> %>
+
 <div class="container margin-top-negative">
   <div class="row">
     <div class="col-8">
       <div class="petsitter-show-card">
-        <h1><%= @petsitter.first_name @petsitter.last_name %></h1>
-        <h3>more information:</h3>
-        <p><%= @petsitter.experience %></p>
+        <h1><%= @petsitter.user.first_name %></h1>
+        <p><%= @petsitter.user.email %></p>
+      </div>
+      <div class="petsitter-show-card">
+        <h3>More information:</h3>
         <p><%= @petsitter.availability %></p>
+         <p><%= @petsitter.experience %></p>
       </div>
     </div>
 
-<div class="col-4">
+    <div class="col-4">
       <div class="petsitter-show-card">
-        <h5>Book this Petsitter:</h5>
+        <h5>Hire me:</h5>
 
         <form action="">
           <div class="input-group">
             <span class="input-group-text" id="start-date-label">From:</span>
-            <input type="text" class="form-control" placeholder="12/02/2023 @1pm" aria-label="start-date" aria-describedby="start-date-label">
+            <input type="text" class="form-control" placeholder="Date + Time" aria-label="start-date" aria-describedby="start-date-label">
           </div>
           <div class="input-group mt-2">
             <span class="input-group-text" id="end-date-label">To:</span>
-            <input type="text" class="form-control" placeholder="12/02/2023 @ 3pm" aria-label="end-date" aria-describedby="start-date-label">
+            <input type="text" class="form-control" placeholder="Date + Time" aria-label="end-date" aria-describedby="start-date-label">
           </div>
           <input type="submit" value="Book" class="btn btn-secondary mt-2" style="width: 100%">
         </form>
       </div>
+      </div>
+    </div>
+  </div>
+</div>
