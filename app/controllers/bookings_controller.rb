@@ -1,18 +1,18 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
 
-  # def new
-  #   @booking = Booking.new
-  #   raise
-  # end
+  def new
+    @booking = Booking.new
+  end
 
   def create
-    @booking = Booking.new(booking_params)
-    @booking.user_id = current_user.id
     @petsitter = Petsitter.find(params[:petsitter_id])
-    @booking.petsitter = @petsitter
-    @booking.save
-    raise
+    @booking = @petsitter.bookings.build(booking_params)
+    @booking.user = current_user
+
+    if @booking.save
+      redirect_to my_bookings_path
+    end
   end
 
   def my_bookings
