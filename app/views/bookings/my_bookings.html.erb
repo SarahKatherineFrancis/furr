@@ -25,7 +25,9 @@
       </div>
       <div class="row align-items-center mt-3">
         <div class="col-md-8">
-          <a href="bookings/y/reviews/new" class="btn btn-primary btn-sm mr-2">Add a Review</a>
+
+          <%# <% <a href="new_booking_review_path" class="btn btn-primary btn-sm mr-2">Add a Review</a> %>
+          <%= link_to "New Review", new_booking_review_path(booking), class:"btn btn-secondary" %>
           <a href="#" class="btn btn-secondary btn-sm">Book Again</a>
         </div>
         <div class="col-md-4 text-right">

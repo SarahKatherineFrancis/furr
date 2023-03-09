@@ -15,6 +15,7 @@
             <p class="card-text"><%= petsitter.experience %></p>
             <p class="card-text"><%= petsitter.availability ? "Available" : "Not Available" %></p>
           </div>
+            <%= petsitter.user.address %>
           <div class="card-footer">
             <%= link_to "Book now", petsitter_path(petsitter), class: "btn btn-primary btn-block" %>
           </div>
