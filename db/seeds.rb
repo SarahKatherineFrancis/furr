@@ -2,6 +2,7 @@ puts "Clearing database"
 Booking.destroy_all
 Petsitter.destroy_all
 User.destroy_all
+Review.destroy_all
 puts "Creating 20 Users"
 
 normal_users = []
@@ -41,4 +42,11 @@ end
     petsitter_id: pet.id)
 
     p "created booking id #{booking.id} for user #{booking.user.first_name} and sitter #{booking.petsitter.user.first_name}"
+
+  review = Review.create(
+    comment: Faker::Lorem.paragraph,
+    rating: rand(0..5),
+    booking_id: booking.id)
+
+    p "create a review. review id #{review.id} for booking with sitter #{review.booking.petsitter.id} and user #{review.booking.user.id}"
 end
