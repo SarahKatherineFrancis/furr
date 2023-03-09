@@ -79,3 +79,7 @@ end
 gem "devise"
 gem 'email_validator'
 gem 'faker'
+
+gem 'gravatar_image_tag'
+gem "geocoder"
+
