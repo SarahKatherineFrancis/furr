@@ -1,15 +1,10 @@
 class BookingsController < ApplicationController
   before_action :authenticate_user!
 
-  def new
-    @booking = Booking.new
-  end
-
   def create
     @petsitter = Petsitter.find(params[:petsitter_id])
     @booking = @petsitter.bookings.build(booking_params)
     @booking.user = current_user
-
     if @booking.save
       redirect_to my_bookings_path
     end
@@ -18,6 +13,14 @@ class BookingsController < ApplicationController
   def my_bookings
     @bookings = current_user.bookings
     @booking_ids = @bookings.ids
+  end
+
+  def my_sittings
+    if current_user.petsitter
+      @bookings = current_user.petsitter.bookings
+    else
+      @bookings = []
+    end
   end
 
   private
