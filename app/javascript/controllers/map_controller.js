@@ -3,10 +3,10 @@ import { Controller } from "@hotwired/stimulus"
 export default class extends Controller {
   static values = {
     apiKey: String,
+    markers: Array
   }
 
   connect() {
-    console.log("mapbox connected")
     mapboxgl.accessToken = this.apiKeyValue
 
     this.map = new mapboxgl.Map({
