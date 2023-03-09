@@ -1,4 +1,8 @@
-<h2 class="mb-3">My Bookings:</h2>
+<div class="section-head">
+    <h2 class="mb-3">My Bookings</h2>
+    <%= link_to "Go Back", root_path, class:"btn btn-secondary" %>
+</div>
+
 <% @bookings.each do |booking| %>
   <div class="d-flex flex-row w-100 border rounded mb-3 align-items-center shadow">
     <div class="align-self-start mr-3">
@@ -21,7 +25,7 @@
       </div>
       <div class="row align-items-center mt-3">
         <div class="col-md-8">
-          <a href="#" class="btn btn-primary btn-sm mr-2">Add a Review</a>
+          <a href="bookings/y/reviews/new" class="btn btn-primary btn-sm mr-2">Add a Review</a>
           <a href="#" class="btn btn-secondary btn-sm">Book Again</a>
         </div>
         <div class="col-md-4 text-right">
@@ -30,4 +34,8 @@
       </div>
     </div>
   </div>
+<% end %>
+
+<% @bookings.each do |booking| %>
+  <%= booking.id %>
 <% end %>

@@ -3,6 +3,6 @@
 
 <%= simple_form_for @petsitter do |f| %>
   <%= f.input :experience %>
-  <%= f.select :availability, ['True', 'False']%>
+  <%= f.select :availability, ['Available', 'Not Available']%>
   <%= f.button :submit %>
 <% end %>
