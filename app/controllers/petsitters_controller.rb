@@ -42,7 +42,11 @@ class PetsittersController < ApplicationController
       scores.each do |rating|
         sum += rating
       end
-    average = sum / scores.count
+    if scores.count > 0
+      average = sum / scores.count
+    else
+      return scores.first
+    end
     return average
   end
 
