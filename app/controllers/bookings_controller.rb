@@ -12,6 +12,15 @@ class BookingsController < ApplicationController
 
   def my_bookings
     @bookings = current_user.bookings
+    @booking_ids = @bookings.ids
+  end
+
+  def my_sittings
+    if current_user.petsitter
+      @bookings = current_user.petsitter.bookings
+    else
+      @bookings = []
+    end
   end
 
   private
