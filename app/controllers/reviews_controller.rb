@@ -7,8 +7,8 @@ class ReviewsController < ApplicationController
   def create
     @review = Review.new(review_params)
     @review.booking_id = params[:booking_id]
-    redirect_to root_path if @review.save
     raise
+    redirect_to root_path if @review.save
   end
 
   private
