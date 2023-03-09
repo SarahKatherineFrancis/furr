@@ -11,10 +11,8 @@
 @import "components/index";
 @import "pages/index";
 
-.petsitter-show-card {
-  background: #F8F9FA;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 1px 1px 2px rgba(0,0,0,0.1);
-  border-radius: 3px;
+body {
+  min-height: 400px;
+  margin-bottom: 100px;
+  clear: both;
 }
