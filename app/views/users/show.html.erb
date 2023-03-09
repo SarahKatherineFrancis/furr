@@ -1,13 +1,25 @@
 <h1>My profile</h1>
-
 <div class="card">
   <div class="card-body d-flex align-items-center">
     <img src="<%= current_user.profile_photo %>" class="rounded-circle img-fluid mr-3" alt="<%= current_user.first_name %>">
     <div class="d-flex flex-column m-l-3">
-      <h3 class="mb-0"><%= "#{current_user.first_name} #{current_user.last_name}" %></h3>
-      <p class="mb-0"><%= current_user.address %></p>
-      <p class="mb-0"><strong>Email:</strong> <%= current_user.email %></p>
-      <p class="mb-0"><strong>Phone:</strong> <%= current_user.phone %></p>
+
+    <h3 class="mb-0"><%= "#{current_user.first_name} #{current_user.last_name}" %></h3>
+    <br>
+    <% if @user.petsitter %>
+
+        <p class="mb-0"><strong>Address:</strong> <%= current_user.address %></p>
+        <p class="mb-0"><strong>Email:</strong> <%= current_user.email %></p>
+        <p class="mb-0"><strong>Phone:</strong> <%= current_user.phone %></p>
+  <br>
+        <p class="mb-0"><strong>Bio:</strong> <%= @user.petsitter.experience %></p>
+        <p class="mb-0"><strong>Current Availability:</strong> <%= @user.petsitter.availability %></p>
+
+        <% else %>
+          <p class="mb-0"><%= current_user.address %></p>
+          <p class="mb-0"><strong>Email:</strong> <%= current_user.email %></p>
+          <p class="mb-0"><strong>Phone:</strong> <%= current_user.phone %></p>
+      <% end %>
     </div>
     <%= link_to edit_user_registration_path, class: "btn btn-link position-absolute text-secondary", style: "right: 10px; top: 10px;" do %>
       <i class="fa fa-cog">Edit</i>

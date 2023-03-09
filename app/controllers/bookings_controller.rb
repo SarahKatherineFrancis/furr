@@ -12,6 +12,7 @@ class BookingsController < ApplicationController
 
   def my_bookings
     @bookings = current_user.bookings
+    @booking_ids = @bookings.ids
   end
 
   def my_sittings

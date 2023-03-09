@@ -2,15 +2,70 @@
   <div class="row">
     <div class="col-8">
       <div class="petsitter-show-card">
-        <h1><%= @petsitter.user.first_name %> <%= @petsitter.user.last_name %></h1>
-        <br>
-        <p><strong>Email Address:</strong> <%= @petsitter.user.email %></p>
+        <div class="petsitter-show-card-header">
+          <h1><%= @petsitter.user.first_name %> <%= @petsitter.user.last_name %></h1>
+          <img src="<%= @petsitter.user.profile_photo %>" class="avatar-large" alt="<%= @petsitter.user.first_name %>">
+        </div>
+        <p><strong>Availability:</strong> <%= @petsitter.availability %></p>
+        <p><strong>Address:</strong> <%= @petsitter.user.address %></p>
+        <p><strong>Bio:</strong> <%= @petsitter.experience %></p>
+
       </div>
       <div class="petsitter-show-card">
-        <h3><strong>More information:</strong></h3>
-        <br>
-        <p><strong>Availability:</strong> <%= @petsitter.availability %></p>
-        <p><strong>Experience:</strong> <%= @petsitter.experience %></p>
+
+      <h3>User Reviews (<%=@count%>):</h3>
+      <h3>Average rating (<%= @average %>)</h3>
+       <div class="reviews">
+        <% @reviews.each do |review| %>
+        <% if review.booking.petsitter.id == @petsitter.id%>
+          <div class="review">
+            <div class="review-header">
+              <h6><b><%= review.booking.user.first_name %> <%= review.booking.user.last_name %></b></h6>
+              <div class="star-rating">
+                 <% if review.rating == 0 %>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                <% elsif review.rating == 1 %>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                <% elsif review.rating == 2 %>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                <% elsif review.rating == 3 %>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                <% elsif review.rating == 4 %>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                <% else %>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                <% end %>
+              </div>
+            </div>
+            <p>Comment: <%= review.comment %></p>
+          </div>
+          <% end %>
+        <% end %>
+        </div>
       </div>
     </div>
     <div class="col-4">
@@ -26,6 +81,8 @@
           <%= f.submit "Book", class: "btn btn-secondary mt-2", style: "width: 100%" %>
         <% end %>
       </div>
+    </div>
+
     </div>
   </div>
 </div>
