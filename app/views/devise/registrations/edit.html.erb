@@ -1,5 +1,8 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-<%= link_to "Go Back", root_path, class:"btn btn-secondary" %>
+
+<div class="section-head">
+  <h2>Edit <%= resource_name.to_s.humanize %></h2>
+  <%= link_to "Go Back", root_path, class:"btn btn-secondary" %>
+</div>
 
 
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
@@ -33,4 +36,4 @@
 <% end %>
 
 <br>
-<%= button_to "Cancel my account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn btn-secondary" %>
+<%= button_to "Delete My Account", registration_path(resource_name), data: { confirm: "Are you sure?", turbo_confirm: "Are you sure?" }, method: :delete, class:"btn btn-danger delete-account" %>

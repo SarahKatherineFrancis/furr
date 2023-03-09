@@ -1,3 +1,4 @@
+
 <div class="section-head">
     <h2 class="mb-3">My Bookings</h2>
     <%= link_to "Go Back", root_path, class:"btn btn-secondary" %>
@@ -6,7 +7,11 @@
 <% @bookings.each do |booking| %>
   <div class="d-flex flex-row w-100 border rounded mb-3 align-items-center shadow">
     <div class="align-self-start mr-3">
-      <img src="<%= booking.petsitter.user.profile_photo %>" class="img-fluid rounded-circle" alt="<%= current_user.first_name %>">
+<% if booking.photo.attached? %>
+  <% cl_image_tag booking.photo.key, class: "img-fluid rounded-circle", height: 150, width: 150, crop: :fill %>
+ <% else %>
+ <%= booking.pet_name %>
+  <% end %>
     </div>
     <div class="flex-grow-1">
       <div class="row align-items-center">
@@ -23,15 +28,33 @@
           <p><strong>Pet Type:</strong> <%= booking.pet_type %></p>
         </div>
       </div>
+      <div class="flex-grow-1">
+        <div class="row align-items-center">
+          <div class="col-md-4">
+            <p><strong>Petsitter's Name:</strong> <%= "#{booking.petsitter.user.first_name} #{booking.petsitter.user.last_name}" %></p>
+            <p><strong>Petsitter's Number:</strong> <%= booking.petsitter.user.phone %></p>
+          </div>
+          <div class="col-md-4">
+            <p><strong>Dates:</strong> <%= booking.start_date.strftime('%B %d, %Y') %> - <%= booking.end_date.strftime('%B %d, %Y') %></p>
+            <p><strong>Service:</strong> <%= booking.service %></p>
+          </div>
+          <div class="col-md-4">
+            <p><strong>Pet Name:</strong> <%= booking.pet_name %></p>
+            <p><strong>Pet Type:</strong> <%= booking.pet_type %></p>
+          </div>
+
+        </div>
+
+      </div>
       <div class="row align-items-center mt-3">
         <div class="col-md-8">
-        
-          <a href="#" class="btn btn-secondary btn-sm">Book Again</a>
-        </div>
+
         <div class="col-md-4 text-right">
           <p><strong>Price:</strong> R200</p>
         </div>
       </div>
+          <%= link_to "New Review", new_booking_review_path(booking), class:"btn btn-secondary" %>
+          <%# <a href="#" class="btn btn-secondary btn-sm">Book Again</a> %>
     </div>
   </div>
 <% end %>
