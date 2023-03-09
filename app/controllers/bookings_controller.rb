@@ -14,6 +14,10 @@ class BookingsController < ApplicationController
     @bookings = current_user.bookings
   end
 
+  def my_sittings
+    @bookings = Booking.where(petsitter_id: current_user.petsitter_id)
+  end
+
   private
 
   def booking_params
