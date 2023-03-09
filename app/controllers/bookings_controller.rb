@@ -13,6 +13,8 @@ class BookingsController < ApplicationController
   def my_bookings
     @bookings = current_user.bookings
     @booking_ids = @bookings.ids
+    raise
+    redirect_to my_bookings_path if @bookings.save
   end
 
   def my_sittings

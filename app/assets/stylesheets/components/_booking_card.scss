@@ -9,3 +9,8 @@
   margin: 20px 0px;
   background-color: darken($color: #ffffff, $amount: 0.1);
 }
+
+.bookings {
+  display: flex;
+  flex-direction: column;
+}
