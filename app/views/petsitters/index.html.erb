@@ -11,10 +11,14 @@
           <div class="card-body">
             <h5 class="card-title"><%= "#{petsitter.user.first_name} #{petsitter.user.last_name}" %></h5>
             <p class="card-text"><%= petsitter.experience %></p>
-            <p class="card-text"><%= petsitter.availability ? "Available" : "Not Available" %></p>
+            <p class="card-text"><% if petsitter.availability %>
+  <p class="card-text"><i class="fa-solid fa-calendar-check"></i> Available</p>
+<% else %>
+  <p class="card-text"><i class="fa-solid fa-calendar-xmark"></i> Not Available</p>
+<% end %></p>
           </div>
           <div class="card-footer">
-            <%= link_to "Book now", petsitter_path(petsitter), class: "btn btn-primary btn-block" %>
+            <%= link_to "Show more", petsitter_path(petsitter), class: "btn btn-primary btn-block" %>
           </div>
         </div>
       </div>
