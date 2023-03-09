@@ -6,7 +6,11 @@
 <% @bookings.each do |booking| %>
   <div class="d-flex flex-row w-100 border rounded mb-3 align-items-center shadow">
     <div class="align-self-start mr-3">
-      <img src="<%= booking.petsitter.user.profile_photo %>" class="img-fluid rounded-circle" alt="<%= current_user.first_name %>">
+<%= if booking.photo.attached?
+   cl_image_tag booking.photo.key, class: "img-fluid rounded-circle", height: 150, width: 150, crop: :fill
+  else
+  "#{booking.pet_name}"
+  end%>
     </div>
     <div class="flex-grow-1">
       <div class="row align-items-center">
