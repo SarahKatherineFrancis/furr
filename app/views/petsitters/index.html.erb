@@ -1,8 +1,6 @@
 
-<div class="section-head">
-    <h1>Sitters</h1>
-    <%= link_to "Go Back", root_path, class: "btn btn-secondary btn-block" %>
-</div>
+<h1>Sitters</h1>
+  <%= link_to "Go Back", root_path, class: "btn btn-primary btn-block" %>
 
 <div class="container">
   <div class="row">
@@ -24,3 +22,9 @@
     <% end %>
   </div>
 </div>
+
+<h2>MAP OF WHERE SITTERS ARE LOCATED</h2>
+<div style="width: 100%; height: 600px;"
+  data-controller="map"
+  data-map-markers-value="<%= @markers.to_json %>"
+  data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"></div>

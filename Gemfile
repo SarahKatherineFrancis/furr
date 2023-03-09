@@ -1,4 +1,4 @@
-source "https://rubygems.org"
+source "httPs://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby "3.1.2"
@@ -79,4 +79,7 @@ end
 gem "devise"
 gem 'email_validator'
 gem 'faker'
+
 gem 'gravatar_image_tag'
+gem "geocoder"
+
