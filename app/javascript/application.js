@@ -3,5 +3,3 @@ import "@hotwired/turbo-rails"
 import "./controllers"
 import "bootstrap"
 import "popper.js/dist/popper"
-
-import 'controllers'
