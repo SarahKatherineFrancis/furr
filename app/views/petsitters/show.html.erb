@@ -14,7 +14,7 @@
       <div class="petsitter-show-card">
 
       <h3>User Reviews (<%=@count%>):</h3>
-      <h3>Average rating (<%= @average %>)</h3>
+  
        <div class="reviews">
         <% @reviews.each do |review| %>
         <% if review.booking.petsitter.id == @petsitter.id%>

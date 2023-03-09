@@ -7,10 +7,9 @@ Rails.application.routes.draw do
   get '/my_sittings', to: 'bookings#my_sittings', as: 'my_sittings'
 
   resources :bookings, only: [:create, :index] do
-    resources :reviews, only: [:new]
+    resources :reviews, only: [:create, :new]
   end
-
-  resources :reviews
+  
   resources :users, only: [:index, :show]
 
   get '/my_profile', to: 'users#show', id: 'current'
