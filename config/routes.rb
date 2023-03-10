@@ -5,6 +5,7 @@ Rails.application.routes.draw do
   get '/my_dashboard', to: 'pages#index', as: 'my_dashboard'
   get '/my_bookings', to: 'bookings#my_bookings', as: 'my_bookings'
   get '/my_sittings', to: 'bookings#my_sittings', as: 'my_sittings'
+  get '/my_past_bookings', to: 'bookings#my_past_bookings', as: 'my_past_bookings'
 
   resources :bookings, only: [:create, :index] do
     resources :reviews, only: [:new]
