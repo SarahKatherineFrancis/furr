@@ -15,6 +15,7 @@
 <% else %>
 <div class="bookings">
   <% @bookings.each do |booking| %>
+  <% if Date.today < booking.end_date %>
       <div class="d-flex flex-row border rounded mb-3 align-items-center shadow">
         <div class="align-self-start mr-3">
           <% if booking.photo.attached? %>
@@ -51,6 +52,7 @@
             </div>
           </div>
       </div>
+      <% end %>
   <% end %>
     <% end %>
 </div>
