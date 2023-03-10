@@ -1,51 +1,49 @@
 <div class="petsitter-booking-card border rounded p-3">
   <h5><i class="far fa-calendar-check"></i> Book me:</h5>
   <div class="container">
-    <div class="row">
-      <div class="col-md-8 offset-md-2">
-        <%= simple_form_for([@petsitter, @booking]) do |f| %>
-          <%= f.input :start_date, as: :date, input_html: { class: 'date-input', style: 'width: 100px;' }, label_html: { class: 'font-weight-bold' } %>
-          <%= f.input :end_date, as: :date, input_html: { class: 'date-input', style: 'width: 100px;' }, label_html: { class: 'font-weight-bold' } %>
-          <div class="form-group">
-            <%= f.label :pet_name, "Pet name:", for: "booking_pet_name", class: 'font-weight-bold' %>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-paw"></i></span>
-              </div>
-              <%= f.text_field :pet_name, class: "form-control", placeholder: "Enter your pet's name", id: "booking_pet_name" %>
-            </div>
+    <%= simple_form_for([@petsitter, @booking]) do |f| %>
+      <%= f.input :start_date, as: :date, input_html: { class: 'date-input', style: 'width: 100px;' }, label_html: { class: 'font-weight-bold' } %>
+      <%= f.input :end_date, as: :date, input_html: { class: 'date-input', style: 'width: 100px;' }, label_html: { class: 'font-weight-bold' } %>
+      <div class="form-group">
+        <%= f.label :pet_name, "Pet name:", for: "booking_pet_name", class: 'font-weight-bold' %>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-paw"></i></span>
           </div>
+          <%= f.text_field :pet_name, class: "form-control input", placeholder: "Enter your pet's name", id: "booking_pet_name" %>
+        </div>
+      </div>
 
-          <div class="form-group">
-            <%= f.label :pet_type, "Select a pet type", for: "booking_pet_type", class: 'font-weight-bold' %>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-dog"></i></span>
-              </div>
-              <%= f.select :pet_type, ['Dog', 'Cat', 'Fish', 'Parrot', 'Hamster', 'Snake'], { prompt: "Select a pet type" }, { class: "form-control", id: "booking_pet_type" } %>
-            </div>
+      <div class="form-group">
+        <%= f.label :pet_type, "Select a pet type", for: "booking_pet_type", class: 'font-weight-bold' %>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-dog"></i></span>
           </div>
+          <%= f.select :pet_type, ['Dog', 'Cat', 'Fish', 'Parrot', 'Hamster', 'Snake'], { prompt: "Select a pet type" }, { class: "form-control stretch-select", id: "booking_pet_type" } %>
+        </div>
+      </div>
 
-          <div class="form-group">
-            <%= f.label :service, "Select a service", for: "booking_service", class: 'font-weight-bold' %>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <span class="input-group-text"><i class="fas fa-clipboard-check"></i></span>
-              </div>
-              <%= f.select :service, ['Walk', 'Sitting', 'Checkin'], { prompt: "Select a service" }, { class: "form-control", id: "booking_service" } %>
-            </div>
+      <div class="form-group">
+        <%= f.label :service, "Select a service", for: "booking_service", class: 'font-weight-bold' %>
+        <div class="input-group">
+          <div class="input-group-prepend">
+            <span class="input-group-text"><i class="fas fa-clipboard-check"></i></span>
           </div>
-
-          <div class="form-group mb-3">
-            <%= f.label :photo, "Pet Photo", for: "booking_photo", class: 'font-weight-bold' %>
-            <div class="input-group">
-              <%= f.file_field :photo, input_html: { class: "form-control-file", id: "booking_photo" } %>
-            </div>
-          </div>
+          <%= f.select :service, ['Walk', 'Sitting', 'Checkin'], { prompt: "Select a service" }, { class: "form-control", id: "booking_service" } %>
+        </div>
+      </div>
 
           <%= f.submit "Book Now", class: "btn btn-secondary btn-block" %>
         <% end %>
+      <div class="form-group mb-3">
+        <%= f.label :photo, "Pet Photo", for: "booking_photo", class: 'font-weight-bold' %>
+        <div class="input-group">
+          <%= f.file_field :photo, input_html: { class: "form-control-file", id: "booking_photo" } %>
+        </div>
+
       </div>
-    </div>
+      <%= f.submit "Book Now", class: "btn btn-primary btn-block" %>
+    <% end %>
   </div>
 </div>

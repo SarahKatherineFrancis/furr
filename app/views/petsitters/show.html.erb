@@ -13,16 +13,14 @@
         <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> <%= @petsitter.user.address %></p>
         <p><i class="fas fa-book"></i> <strong>Bio:</strong> <%= @petsitter.experience %></p>
       </div>
-
       <div class="petsitter-show-card">
         <h3><i class="far fa-comments"></i> User Reviews (<%=@count%>):</h3>
-        <h3><i class="fas fa-star"></i> Average rating (<%= @average %>)</h3>
         <div class="reviews">
           <% @reviews.each do |review| %>
             <% next unless review.booking.petsitter.id == @petsitter.id %>
             <div class="review">
               <div class="review-header">
-                <h6><b><%= review.booking.user.first_name %></b></h6>
+                <h6><b><%= review.booking.user.first_name %> <%= review.booking.user.last_name %></b></h6>
                 <div class="star-rating">
                   <% (1..5).each do |i| %>
                     <% if i <= review.rating %>
@@ -32,18 +30,18 @@
                     <% end %>
                   <% end %>
                 </div>
-                <h6><%= review.comment %></h6>
               </div>
+              <h6><%= review.comment %></h6>
             </div>
-          <%end%>
-        </div>
+          </div>
+        <%end%>
       </div>
     </div>
-
-    <div class="col-4">
-      <div class="petsitter-booking-card">
-         <%= render "petsitter_booking_card" %>
-      </div>
+  <div class="col-4">
+    <div class="petsitter-booking-card">
+      <%= render "petsitter_booking_card" %>
     </div>
   </div>
+  </div>
+</div>
 </div>
