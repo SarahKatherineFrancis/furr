@@ -3,15 +3,32 @@
     <div class="col-8">
       <div class="petsitter-show-card">
         <div class="petsitter-show-card-header">
-          <h1><%= @petsitter.user.first_name %> <%= @petsitter.user.last_name %></h1>
-          <img src="<%= @petsitter.user.profile_photo %>" class="avatar-large" alt="<%= @petsitter.user.first_name %>">
+          <h1><%= " #{@petsitter.user.first_name} #{@petsitter.user.last_name}" %></h1>
+          <%= image_tag @petsitter.user.profile_photo, class: "avatar-large", alt: @petsitter.user.first_name %>
         </div>
-        <p><strong>Availability:</strong> <%= @petsitter.availability %></p>
-        <p><strong>Address:</strong> <%= @petsitter.user.address %></p>
-        <p><strong>Bio:</strong> <%= @petsitter.experience %></p>
-
+        <p><i class="fas fa-calendar-alt"></i> <strong>Availability:</strong> <%= @petsitter.availability %></p>
+        <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> <%= @petsitter.user.address %></p>
+        <p><i class="fas fa-book"></i> <strong>Bio:</strong> <%= @petsitter.experience %></p>
       </div>
+
       <div class="petsitter-show-card">
+        <h3><i class="far fa-comments"></i> User Reviews (<%=@count%>):</h3>
+        <h3><i class="fas fa-star"></i> Average rating (<%= @average %>)</h3>
+        <div class="reviews">
+          <% @reviews.each do |review| %>
+            <% next unless review.booking.petsitter.id == @petsitter.id %>
+            <div class="review">
+              <div class="review-header">
+                <h6><b><%= review.booking.user.full_name %></b></h6>
+                <div class="star-rating">
+                  <% (1..5).each do |i| %>
+                    <% if i <= review.rating %>
+                      <%= content_tag :span, nil, class: "fa fa-star checked" %>
+                    <% else %>
+                      <%= content_tag :span, nil, class: "fa fa-star" %>
+                    <% end %>
+                  <% end %>
+                </div>
 
       <h3>User Reviews (<%=@count%>):</h3>
        <div class="reviews">
@@ -58,31 +75,81 @@
                   <span class="fa fa-star checked"></span>
                   <span class="fa fa-star checked"></span>
                 <% end %>
+                
               </div>
+              <p><i class="far fa-comment"></i> Comment: <%= review.comment %></p>
             </div>
-            <p>Comment: <%= review.comment %></p>
-          </div>
           <% end %>
-        <% end %>
         </div>
       </div>
     </div>
+
     <div class="col-4">
       <div class="petsitter-show-card">
-        <h5>Hire me:</h5>
-        <%= simple_form_for([@petsitter, @booking]) do |f| %>
-          <%= f.input :start_date, label: "Start on:", input_html: {class: "form-control", placeholder: "Date + Time"} %>
-          <%= f.input :end_date, label: "End at:", input_html: {class: "form-control", placeholder: "Date + Time"}%>
-          <%= f.input :pet_name, label: "Pet Name:", input_html: {class: "form-control", placeholder: "Pet Name"}%>
-          <%= f.input :pet_type, label: "Pet Type:", input_html: {class: "form-control", placeholder: "Dog | Cat | Parrot"} %>
-          <%= f.input :service, label: "Service Description:", input_html: {class: "form-control", placeholder: "Walk | Feed"}%>
-          <%= f.input :photo, label: "Pet photo:", as: :file %>
-          <%= f.select :service, ['walk', 'feed', 'daycare']%>
-          <%= f.submit "Book", class: "btn btn-secondary mt-2", style: "width: 100%" %>
-        <% end %>
-      </div>
-    </div>
+        <h5><i class="far fa-calendar-check"></i> Book me:</h5>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-8 offset-md-2">
+              <%= simple_form_for([@petsitter, @booking]) do |f| %>
 
+                <div class="form-group">
+                  <div class="input-group date datetimepicker" data-target-input="nearest">
+                    <%= f.input :start_date, input_html: { class: "form-control datetimepicker-input", data: { target: ".datetimepicker" } }, placeholder: "Start date and time" %>
+                    <div class="input-group-append" data-target=".datetimepicker" data-toggle="datetimepicker">
+                      <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="input-group date datetimepicker" data-target-input="nearest">
+                    <%= f.input :end_date, input_html: { class: "form-control datetimepicker-input", data: { target: ".datetimepicker" } }, placeholder: "End date and time" %>
+                    <div class="input-group-append" data-target=".datetimepicker" data-toggle="datetimepicker">
+                      <div class="input-group-text"><i class="far fa-calendar-alt"></i></div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text"><i class="fas fa-paw"></i></div>
+                    </div>
+                    <%= f.input :pet_name, input_html: { class: "form-control" }, placeholder: "Enter your pet's name" %>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text"><i class="fas fa-dog"></i></div>
+                    </div>
+                    <%= f.select :pet_type, ['Dog', 'Cat', 'Fish', 'Parrot', 'Hamster', 'Snake'], { prompt: "Select a pet type" }, { class: "form-control" } %>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <div class="input-group-text"><i class="fas fa-clipboard-check"></i></div>
+                    </div>
+                    <%= f.select :service, ['Walk', 'Sitting', 'Checkin'], { prompt: "Select a service" }, { class: "form-control" } %>
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <%= f.label :photo, "Pet Photo" %>
+                  <div class="input-group">
+                    <%= f.file_field :photo, input_html: { class: "form-control-file" } %>
+                  </div>
+                </div>
+
+                <%= f.submit "Book Now", class: "btn btn-primary btn-block" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
