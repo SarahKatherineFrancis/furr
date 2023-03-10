@@ -61,5 +61,4 @@ class PetsittersController < ApplicationController
   def petsitter_params
     params.require(:petsitter).permit(:experience, :availability)
   end
-
 end
