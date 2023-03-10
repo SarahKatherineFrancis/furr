@@ -10,6 +10,9 @@
   </li>
 </ul>
 
+<% if @bookings.empty? %>
+  <h5>You have no previous bookings!</h5>
+<% else %>
 <div class="bookings">
   <% @bookings.each do |booking| %>
 
@@ -52,5 +55,6 @@
           </div>
       </div>
       <% end %>
+  <% end %>
   <% end %>
 </div>

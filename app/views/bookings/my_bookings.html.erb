@@ -9,11 +9,10 @@
     <a class="nav-link" href="my_past_bookings">Past Bookings</a>
   </li>
 </ul>
-<div class="section-head">
-    <h2 class="mb-3">My Bookings</h2>
-    <%= link_to "Go Back", root_path, class:"btn btn-secondary" %>
-</div>
 
+<% if @bookings.empty? %>
+  <h5>You have no upcoming bookings!</h5>
+<% else %>
 <div class="bookings">
   <% @bookings.each do |booking| %>
       <div class="d-flex flex-row border rounded mb-3 align-items-center shadow">
@@ -47,11 +46,11 @@
               <div class="col-md-4 text-right">
               </div>
               <div class="review-button">
-                <%= link_to "New Review", new_booking_review_path(booking), class:"btn btn-secondary" %>
                 <%= link_to "Cancel Booking", my_bookings_path, class:"btn btn-secondary" %>
               </div>
             </div>
           </div>
       </div>
   <% end %>
+    <% end %>
 </div>
