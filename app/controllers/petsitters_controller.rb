@@ -1,7 +1,7 @@
 class PetsittersController < ApplicationController
   def index
     @petsitters = Petsitter.all
-    @markers = @petsitters.geocoded.map do |petsitter|
+    @markers = User.petsitters.geocoded.map do |petsitter|
       {
         lat: petsitter.latitude,
         lng: petsitter.longitude
