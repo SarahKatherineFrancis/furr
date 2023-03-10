@@ -1,0 +1,50 @@
+.petsitter-booking-card {
+  padding: 20px;
+  margin-bottom: 20px;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+
+  h5 {
+    font-size: 1.2rem;
+    color: #333;
+    margin-bottom: 20px;
+  }
+
+  .btn-secondary {
+    background-color: #007bff;
+    border: none;
+  }
+
+  .btn-secondary:hover {
+    background-color: #0069d9;
+  }
+
+  .btn-secondary:focus {
+    box-shadow: none;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+
+  .form-control {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+
+  .form-control-file {
+    display: block;
+    margin-top: 5px;
+  }
+}
+
+.input-group-text {
+  height: 100%;
+}

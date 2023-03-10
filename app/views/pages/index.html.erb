@@ -1,29 +1,44 @@
 <div class="contents">
-  <h2>Hello, <%= current_user.first_name.capitalize %>!</h2>
-
-  <div class="section-head">
-    <h2>Current Bookings</h2>
-    <%= link_to "My Bookings", my_bookings_path, class: "btn btn-secondary" %>
-  </div>
-
-  <div class="bookings-container">
-    <% bookings = Booking.where(user_id: current_user.id) %>
-    <% if bookings.empty? %>
-      <div class="empty-card">
-        <h3>You currently have no bookings.</h3>
+  <div class="bookings-summary">
+    <div class="bookings-section">
+      <div class="section-head">
+        <h2>My Bookings</h2>
+        <%= link_to "View All", my_bookings_path, class: "btn btn-secondary" %>
       </div>
-    <% else %>
-      <% bookings.each do |booking| %>
-        <%= render "shared/booking_card", booking: booking %>
-      <% end %>
-    <% end %>
+      <div class="bookings-container">
+        <% bookings = Booking.where(user_id: current_user.id) %>
+        <% if bookings.empty? %>
+          <div class="empty-card">
+            <h3>You currently have no bookings.</h3>
+          </div>
+        <% else %>
+          <% booking = bookings.first %>
+          <%= render "shared/booking_card", booking: booking %>
+        <% end %>
+      </div>
+    </div>
+    <div class="bookings-section">
+      <div class="section-head">
+        <h2>My Sittings</h2>
+        <%= link_to "View All", my_sittings_path, class: "btn btn-secondary" %>
+      </div>
+      <div class="bookings-container">
+        <% sittings = Booking.where(petsitter_id: current_user.id) %>
+        <% if sittings.empty? %>
+          <div class="empty-card">
+            <h3>You currently have no sittings.</h3>
+          </div>
+        <% else %>
+          <% sitting = sitting.first %>
+          <%= render "shared/booking_card", booking: sitting %>
+        <% end %>
+      </div>
+    </div>
   </div>
-
   <div class="section-head">
     <h2>Local Sitters</h2>
     <%= link_to "View Sitters", petsitters_path, class: "btn btn-secondary" %>
   </div>
-
   <div class="row">
     <% petsitters = Petsitter.limit(4) %>
     <% petsitters.each do |petsitter| %>
@@ -32,5 +47,4 @@
       </div>
     <% end %>
   </div>
-
 </div>

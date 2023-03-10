@@ -1,9 +1,10 @@
 <div class="card" style="width: 18rem;">
-  <div class="card-body">
-    <h5 class="card-title"><%= " #{booking.petsitter.user.first_name} #{booking.petsitter.user.last_name}" %></h5>
-    <h6 class="card-subtitle mb-2 text-muted">Duration: <%= (booking.end_date - booking.start_date).to_i %> days</h6>
-    <p class="card-text"><%= booking.service %></p>
-    <p class="card-text"><%= booking.pet_name %></p>
-    <p class="card-text"><%= booking.pet_type %></p>
+  <div class="">
+    <h4 class=""><%= " #{booking.petsitter.user.first_name} #{booking.petsitter.user.last_name}" %></h4>
+    <h5>Staring: <%= booking.start_date %></h5>
+    <h6 class="">Duration: <%= (booking.end_date - booking.start_date).to_i %> days</h6>
+    <p class=""><%= booking.service %></p>
+    <p class=""><%= booking.pet_name %></p>
+    <p class=""><%= booking.pet_type %></p>
   </div>
 </div>

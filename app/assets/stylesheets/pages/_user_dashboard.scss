@@ -9,14 +9,18 @@
 
 }
 
-.sitters {
-  display: flex;
- overflow: scroll;
-}
-
-
 .section-head {
   display: flex;
   justify-content: space-between;
-  padding-bottom: 8px; 
+  padding-bottom: 8px;
+}
+
+.bookings-summary {
+  display: flex;
+  justify-content: space-between;
+  padding-bottom: 16px;
+}
+
+.booking-section {
+  margin-bottom: 16px;
 }
