@@ -11,12 +11,13 @@
   }
 
   .btn-secondary {
-    background-color: #007bff;
+    background-color: #395144;
     border: none;
   }
 
   .btn-secondary:hover {
-    background-color: #0069d9;
+    background-color: #395144;
+    color: #F0EBCE
   }
 
   .btn-secondary:focus {
@@ -92,8 +93,8 @@
 }
 
 .flip-card-back {
-  background-color: #2980b9;
-  color: white;
+  background-color: #F0EBCE;
+  color: #395144;
   transform: rotateY(180deg);
   display: flex;
   flex-direction: column;

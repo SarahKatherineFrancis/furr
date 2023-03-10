@@ -1,6 +1,6 @@
 
 <div class="section-head">
-    <h1>Petsitters Nearby</h1>
+    <h2>PETSITTERS NEARBY</h2>
     <%= link_to "Go Back", root_path, class: "btn btn-secondary btn-block" %>
 </div>
 
@@ -17,7 +17,7 @@
         <div class="flip-card-inner">
           <div class="flip-card-front">
             <% if petsitter.user.profile_photo == nil %>
-                <h1>Profile Picture</h1>
+                <h3>Profile Picture</h3>
             <% else %>
               <img src="<%= petsitter.user.profile_photo %>" alt="<%= petsitter.user.first_name %>">
             <% end %>
@@ -34,7 +34,7 @@
 
           <div class="flip-card-back">
             <%= petsitter.user.address %>
-            <%= link_to "View & Book", petsitter_path(petsitter), class: "btn btn-primary btn-secondary" %>
+            <%= link_to "View & Book", petsitter_path(petsitter), class: "btn btn-secondary" %>
           </div>
 
         </div>
