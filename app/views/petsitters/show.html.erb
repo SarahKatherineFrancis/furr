@@ -6,7 +6,10 @@
           <h1><%= " #{@petsitter.user.first_name} #{@petsitter.user.last_name}" %></h1>
           <%= image_tag @petsitter.user.profile_photo, class: "avatar-large", alt: @petsitter.user.first_name %>
         </div>
-        <p><i class="fas fa-calendar-alt"></i> <strong>Availability:</strong> <%= @petsitter.availability %></p>
+        <p><i class="fas fa-calendar-alt"></i> <strong>Available:</strong><%if @petsitter.availability == true %><p>Yes</p>
+        <% else %>
+        <p>No</p>
+        <% end %></p>
         <p><i class="fas fa-map-marker-alt"></i> <strong>Address:</strong> <%= @petsitter.user.address %></p>
         <p><i class="fas fa-book"></i> <strong>Bio:</strong> <%= @petsitter.experience %></p>
       </div>
