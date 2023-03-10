@@ -6,6 +6,8 @@ class User < ApplicationRecord
   has_one :petsitter
   has_many :bookings
 
+  has_one_attached :photo
+
   validates :email, :encrypted_password, :first_name, :last_name, :address, :phone, presence: true
 
   geocoded_by :address
