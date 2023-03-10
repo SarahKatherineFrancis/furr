@@ -23,6 +23,11 @@ class BookingsController < ApplicationController
     end
   end
 
+  def my_past_bookings
+    @bookings = current_user.bookings
+    @booking_ids = @bookings.ids
+  end
+
   private
 
   def booking_params
