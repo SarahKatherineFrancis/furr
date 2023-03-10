@@ -49,7 +49,7 @@ addresses.each do |address|
               profile_photo: Faker::Avatar.image)
   user.save
   p "created petsitter user with #{user.email}"
-              profile_photo: Faker::LoremFlickr.image(size: "300x300", search_terms: ['profile picture person'])
+              # profile_photo: Faker::LoremFlickr.image(size: "300x300", search_terms: ['profile picture person'])
 
   p "created petsitter user with #{user.profile_photo}"
 

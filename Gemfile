@@ -80,6 +80,6 @@ gem "devise"
 gem 'email_validator'
 gem 'faker'
 
+gem 'geocoder'
 gem 'gravatar_image_tag'
 gem "cloudinary"
-
