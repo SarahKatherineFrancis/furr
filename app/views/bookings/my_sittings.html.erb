@@ -5,8 +5,11 @@
   <li class="nav-item">
     <a class="nav-link active" href="#">My Sittings</a>
   </li>
+   <li class="nav-item active">
+    <a class="nav-link" href="my_past_bookings">Past Bookings</a>
+  </li>
 </ul>
-<h2 class="mb-3">My Sittings:</h2>
+
 <% if @bookings.empty? %>
   <h5>You have no sittings!</h5>
 <% else %>
