@@ -5,5 +5,6 @@ class PagesController < ApplicationController
   end
 
   def index
+    @bookings = Booking.all
   end
 end

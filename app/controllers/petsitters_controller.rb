@@ -1,7 +1,14 @@
 class PetsittersController < ApplicationController
   def index
     @petsitters = Petsitter.all
-    # @average = average_review_score
+    @markers = User.petsitters.geocoded.map do |petsitter|
+      {
+        lat: petsitter.latitude,
+        lng: petsitter.longitude,
+        info_window_html: render_to_string(partial: "/shared/info_window", locals: { petsitter: }),
+        marker_html: render_to_string(partial: "/shared/marker")
+      }
+    end
   end
 
   def show
@@ -9,7 +16,7 @@ class PetsittersController < ApplicationController
     @booking = Booking.new
     @reviews = Review.all
     @count = sitter_reviews_counter
-  
+    @average = average_review_score
   end
 
   def new
@@ -26,35 +33,31 @@ class PetsittersController < ApplicationController
     @reviews = Review.all
     count = 0
     @reviews.each do |review|
-      if review.booking.petsitter.id == @petsitter.id
-        count += 1
-      end
+      count += 1 if review.booking.petsitter.id == @petsitter.id
     end
     return count
   end
 
-  # def average_review_score
-  #   @reviews = Review.all
-  #   scores = []
-  #   @reviews.each do |review|
-  #     scores << review.rating if review.booking.petsitter.id == @petsitter.id
-  #   end
-  #   sum = 0
-  #     scores.each do |rating|
-  #       sum += rating
-  #     end
-  #   if scores.count > 0
-  #     average = sum / scores.count
-  #   else
-  #     return scores.first
-  #   end
-  #   return average
-  # end
+  def average_review_score
+    @reviews = Review.all
+    scores = []
+    @reviews.each do |review|
+      scores << review.rating if review.booking.petsitter.id == @petsitter.id
+    end
+    sum = 0
+    scores.each do |rating|
+      sum += rating
+    end
+    return scores.first unless scores.count > 0
+
+    average = sum / scores.count
+
+    return average
+  end
 
   private
 
   def petsitter_params
     params.require(:petsitter).permit(:experience, :availability)
   end
-
 end
