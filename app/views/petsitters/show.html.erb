@@ -29,6 +29,53 @@
                     <% end %>
                   <% end %>
                 </div>
+
+      <h3>User Reviews (<%=@count%>):</h3>
+       <div class="reviews">
+        <% @reviews.each do |review| %>
+        <% if review.booking.petsitter.id == @petsitter.id%>
+          <div class="review">
+            <div class="review-header">
+              <h6><b><%= review.booking.user.first_name %> <%= review.booking.user.last_name %></b></h6>
+              <div class="star-rating">
+                 <% if review.rating == 0 %>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                <% elsif review.rating == 1 %>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                <% elsif review.rating == 2 %>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                <% elsif review.rating == 3 %>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                  <span class="fa fa-star"></span>
+                <% elsif review.rating == 4 %>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star"></span>
+                <% else %>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                  <span class="fa fa-star checked"></span>
+                <% end %>
+                
               </div>
               <p><i class="far fa-comment"></i> Comment: <%= review.comment %></p>
             </div>
