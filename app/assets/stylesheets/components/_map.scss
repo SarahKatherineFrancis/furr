@@ -1,14 +1,16 @@
 .mapboxgl-popup {
   max-width: 200px;
-  background-color: #F0EBCE;
 }
 
 .mapboxgl-popup-content {
   text-align: center;
   font-family:Verdana, Geneva, Tahoma, sans-serif,
-  background-color:#F0EBCE,
 }
 
 .map-box-contents {
-  background-color: #F0EBCE;
+  color: #395144;
+}
+
+.map-box-contents h6{
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
 }
