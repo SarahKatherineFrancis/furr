@@ -46,17 +46,16 @@ addresses.each do |address|
               password: "123456",
               address: address,
               phone: Faker::PhoneNumber.phone_number,
-              profile_photo: Faker::Avatar.image)
+              profile_photo: Faker::LoremFlickr.image(size: "300x300", search_terms: ['profile picture person']))
+
   user.save
   p "created petsitter user with #{user.email}"
-              profile_photo: Faker::LoremFlickr.image(size: "300x300", search_terms: ['profile picture person'])
 
   p "created petsitter user with #{user.profile_photo}"
 
   pet = Petsitter.create(user_id: user.id, experience: Faker::Lorem.paragraph, availability: [true, false].sample)
 
   p "created petsitter profile with id #{pet.availability}"
-
 
   booking = Booking.create!(start_date: Date.today,
     end_date: Date.today,
