@@ -8,10 +8,9 @@ Rails.application.routes.draw do
   get '/my_past_bookings', to: 'bookings#my_past_bookings', as: 'my_past_bookings'
 
   resources :bookings, only: [:create, :index] do
-    resources :reviews, only: [:new]
+    resources :reviews, only: [:new, :create]
   end
 
-  resources :reviews
   resources :users, only: [:show]
 
   get '/my_profile', to: 'users#show', id: 'current'
