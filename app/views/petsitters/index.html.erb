@@ -1,28 +1,50 @@
 
-<h1>Sitters</h1>
-  <%= link_to "Go Back", root_path, class: "btn btn-primary btn-block" %>
+<div class="section-head">
+    <h1>Sitters</h1>
+    <%= link_to "Go Back", root_path, class: "btn btn-secondary btn-block" %>
+</div>
 
 <div class="container">
   <div class="row">
-    <% @petsitters.each do |petsitter| %>
-    <div class="col-md-3 mb-3">
-        <div class="card mb-4 shadow-sm h-100">
-          <img src="<%= petsitter.user.profile_photo %>" class="card-img-top" alt="<%= petsitter.user.first_name %>">
-          <div class="card-body">
-            <h5 class="card-title"><%= "#{petsitter.user.first_name} #{petsitter.user.last_name}" %></h5>
-            <p class="card-text"><%= petsitter.experience %></p>
-            <p class="card-text"><%= petsitter.availability ? "Available" : "Not Available" %></p>
+  <% @petsitters.each do |petsitter| %>
+    <div class="col-md-4 mb-4 petsitter-card">
+      <div class="flip-card">
+        <div class="flip-card-inner">
+          <div class="flip-card-front">
+            <% if petsitter.user.profile_photo == nil %>
+                <h1>Profile Picture</h1>
+            <% else %>
+              <img src="<%= petsitter.user.profile_photo %>" alt="<%= petsitter.user.first_name %>">
+            <% end %>
+            <h5 class="petsitter-name"><%= "#{petsitter.user.first_name}"%></h5>
+
+            <div class="petsitter-status">
+                <% if petsitter.availability == true %>
+                  <p class="card-text"><i class="fa-solid fa-calendar-check"></i> Available</p>
+                <% else %>
+                  <p class="card-text"><i class="fa-solid fa-calendar-xmark"></i> Not Available</p>
+                <% end %>
+            </div>
           </div>
-          <div class="card-footer">
-            <%= link_to "Book now", petsitter_path(petsitter), class: "btn btn-primary btn-block" %>
+
+          <div class="flip-card-back">
+            <%= petsitter.user.address %>
+            <%= link_to "View & Book", petsitter_path(petsitter), class: "btn btn-primary btn-secondary" %>
           </div>
+
         </div>
       </div>
-    <% end %>
+    </div>
+  <% end %>
+</div>
+
+
+
+
   </div>
 </div>
 
-<h2>MAP OF SITTERS LOCATED NEAR YOU</h2>
+<h2>MAP OF WHERE SITTERS ARE LOCATED</h2>
 <div style="width: 100%; height: 600px;"
   data-controller="map"
   data-map-markers-value="<%= @markers.to_json %>"

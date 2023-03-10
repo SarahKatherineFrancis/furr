@@ -14,7 +14,6 @@
       <div class="petsitter-show-card">
 
       <h3>User Reviews (<%=@count%>):</h3>
-      <h3>Average rating (<%= @average %>)</h3>
        <div class="reviews">
         <% @reviews.each do |review| %>
         <% if review.booking.petsitter.id == @petsitter.id%>
@@ -68,7 +67,6 @@
         </div>
       </div>
     </div>
-
     <div class="col-4">
       <div class="petsitter-show-card">
         <h5>Hire me:</h5>
@@ -78,6 +76,7 @@
           <%= f.input :pet_name, label: "Pet Name:", input_html: {class: "form-control", placeholder: "Pet Name"}%>
           <%= f.input :pet_type, label: "Pet Type:", input_html: {class: "form-control", placeholder: "Dog | Cat | Parrot"} %>
           <%= f.input :service, label: "Service Description:", input_html: {class: "form-control", placeholder: "Walk | Feed"}%>
+          <%= f.input :photo, label: "Pet photo:", as: :file %>
           <%= f.select :service, ['walk', 'feed', 'daycare']%>
           <%= f.submit "Book", class: "btn btn-secondary mt-2", style: "width: 100%" %>
         <% end %>

@@ -1,6 +1,6 @@
 .navbar-lewagon {
   justify-content: space-between;
-  background: white;
+  background: $light-brn;
   padding: 10px 50px;
 }
 
@@ -9,11 +9,11 @@
 }
 
 .navbar-lewagon .navbar-brand img {
-  width: 40px;
+  width: 100px;
 }
 
 
 .nav-item {
-  border-left: 1px solid lightgray;
+  border-left: 1px solid $dark-brn;
   padding-right: 8px;
 }

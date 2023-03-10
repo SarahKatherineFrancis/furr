@@ -1,5 +1,6 @@
 Faker::Config.locale = 'en'
 
+require "open-uri"
 puts "Clearing database"
 Review.destroy_all
 Booking.destroy_all
@@ -30,6 +31,11 @@ addresses.each_with_index do |address, index|
               profile_photo: Faker::Avatar.image)
   user.save
   p "created normal user with #{user.email}"
+            )
+  file = URI.open("https://kitt.lewagon.com/placeholder/users/random")
+  user.photo.attach(io: file, filename: "profile#{user.first_name}#{user.last_name}.png", content_type: "image/png")
+  user.save
+  p "created normal user with #{user.photo.key}"
   normal_users << user.id
 end
 
@@ -43,10 +49,13 @@ addresses.each do |address|
               profile_photo: Faker::Avatar.image)
   user.save
   p "created petsitter user with #{user.email}"
+              profile_photo: Faker::LoremFlickr.image(size: "300x300", search_terms: ['profile picture person'])
+            )
+  p "created petsitter user with #{user.profile_photo}"
 
-  pet = Petsitter.create(user_id: user.id, experience: Faker::Lorem.paragraph, availability: Faker::Boolean)
+  pet = Petsitter.create(user_id: user.id, experience: Faker::Lorem.paragraph, availability: [true, false].sample)
 
-  p "created petsitter profile with id #{pet.id}"
+  p "created petsitter profile with id #{pet.availability}"
 
 
   booking = Booking.create!(start_date: Date.today,
