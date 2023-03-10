@@ -29,7 +29,7 @@
             <h3>You currently have no sittings.</h3>
           </div>
         <% else %>
-          <% sitting = sitting.first %>
+          <% sitting = sittings.first %>
           <%= render "shared/booking_card", booking: sitting %>
         <% end %>
       </div>
