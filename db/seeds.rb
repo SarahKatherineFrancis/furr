@@ -23,15 +23,12 @@ addresses = [
 ]
 addresses.each_with_index do |address, index|
   user = User.new(first_name: Faker::Name.first_name,
-              last_name: Faker::Name.last_name,
-              email: "user#{index+1}@example.com",
-              password: "123456",
-              address: address,
-              phone: Faker::PhoneNumber.phone_number,
-              profile_photo: Faker::Avatar.image)
-  user.save
-  p "created normal user with #{user.email}"
-
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: "123456",
+    address: Faker::Address.street_address,
+    phone: Faker::PhoneNumber.phone_number,
+  )
   file = URI.open("https://kitt.lewagon.com/placeholder/users/random")
   user.photo.attach(io: file, filename: "profile#{user.first_name}#{user.last_name}.png", content_type: "image/png")
   user.save
@@ -40,38 +37,28 @@ addresses.each_with_index do |address, index|
 end
 
 addresses.each do |address|
-  user = User.new(first_name: Faker::Name.first_name,
-              last_name: Faker::Name.last_name,
-              email: Faker::Internet.email,
-              password: "123456",
-              address: address,
-              phone: Faker::PhoneNumber.phone_number,
-              profile_photo: Faker::Avatar.image)
-  user.save
-  p "created petsitter user with #{user.email}"
-              # profile_photo: Faker::LoremFlickr.image(size: "300x300", search_terms: ['profile picture person'])
-
-  p "created petsitter user with #{user.profile_photo}"
-
-  pet = Petsitter.create(user_id: user.id, experience: Faker::Lorem.paragraph, availability: [true, false].sample)
-
-  p "created petsitter profile with id #{pet.availability}"
-
-
-  booking = Booking.create!(start_date: Date.today,
-    end_date: Date.today,
-    service: ["Dog Walking", "Pet Sitting", "Pet Boarding"].sample,
-    pet_name: Faker::Creature::Dog.name,
-    pet_type: Faker::Creature::Dog.breed,
-    user_id: normal_users.sample(),
-    petsitter_id: pet.id)
-
-    p "created booking id #{booking.id} for user #{booking.user.first_name} and sitter #{booking.petsitter.user.first_name}"
-
-  review = Review.create(
-    comment: Faker::Lorem.paragraph,
-    rating: rand(0..5),
-    booking_id: booking.id)
-
-    p "create a review. review id #{review.id} for booking with sitter #{review.booking.petsitter.id} and user #{review.booking.user.id}"
+  user = User.create(first_name: Faker::Name.first_name,
+    last_name: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    password: "123456",
+    address: Faker::Address.street_address,
+    phone: Faker::PhoneNumber.phone_number,
+    profile_photo: Faker::LoremFlickr.image(size: "300x300", search_terms: ['profile picture person'])
+  )
+p "created petsitter user with #{user.profile_photo}"
+pet = Petsitter.create(user_id: user.id, experience: Faker::Lorem.paragraph, availability: [true, false].sample)
+p "created petsitter profile with id #{pet.availability}"
+booking = Booking.create!(start_date: Date.today,
+end_date: Date.today,
+service: ["Dog Walking", "Pet Sitting", "Pet Boarding"].sample,
+pet_name: Faker::Creature::Dog.name,
+pet_type: Faker::Creature::Dog.breed,
+user_id: normal_users.sample(),
+petsitter_id: pet.id)
+p "created booking id #{booking.id} for user #{booking.user.first_name} and sitter #{booking.petsitter.user.first_name}"
+review = Review.create(
+comment: Faker::Lorem.paragraph,
+rating: rand(0..5),
+booking_id: booking.id)
+p "create a review. review id #{review.id} for booking with sitter #{review.booking.petsitter.id} and user #{review.booking.user.id}"
 end
